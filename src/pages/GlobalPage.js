@@ -55,6 +55,7 @@ function GlobalPage() {
   const below800 = useMedia('(max-width: 800px)')
 
   // scrolling refs
+
   useEffect(() => {
     document.querySelector('body').scrollTo({
       behavior: 'smooth',
@@ -64,7 +65,7 @@ function GlobalPage() {
 
   return (
     <PageWrapper>
-      <ThemedBackground backgroundColor={transparentize(0.8, '#ff007a')} />
+      <ThemedBackground backgroundColor={transparentize(0.8, '#cc9933')} />
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
@@ -84,9 +85,9 @@ function GlobalPage() {
                       </RowBetween>
                       <RowBetween align="flex-end">
                         <TYPE.main fontSize={'1.5rem'} lineHeight={1} fontWeight={600}>
-                          {oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD, true) : '-'}
+                          {formattedNum(oneDayVolumeUSD, true)}
                         </TYPE.main>
-                        <TYPE.main fontSize={12}>{volumeChangeUSD ? formattedPercent(volumeChangeUSD) : '-'}</TYPE.main>
+                        <TYPE.main fontSize={12}>{formattedPercent(volumeChangeUSD)}</TYPE.main>
                       </RowBetween>
                     </AutoColumn>
                     <AutoColumn gap="20px">
@@ -96,11 +97,9 @@ function GlobalPage() {
                       </RowBetween>
                       <RowBetween align="flex-end">
                         <TYPE.main fontSize={'1.5rem'} lineHeight={1} fontWeight={600}>
-                          {totalLiquidityUSD ? formattedNum(totalLiquidityUSD, true) : '-'}
+                          {formattedNum(totalLiquidityUSD, true)}
                         </TYPE.main>
-                        <TYPE.main fontSize={12}>
-                          {liquidityChangeUSD ? formattedPercent(liquidityChangeUSD) : '-'}
-                        </TYPE.main>
+                        <TYPE.main fontSize={12}>{formattedPercent(liquidityChangeUSD)}</TYPE.main>
                       </RowBetween>
                     </AutoColumn>
                   </AutoColumn>
@@ -141,8 +140,9 @@ function GlobalPage() {
             </RowBetween>
           </ListOptions>
           <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ' }}>
-            <PairList pairs={allPairs} useTracked={true} />
+            <PairList pairs={allPairs} />
           </Panel>
+
           <span>
             <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
               Transactions
